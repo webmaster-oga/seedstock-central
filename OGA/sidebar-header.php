@@ -1,5 +1,12 @@
 <?php theme_print_sidebar('header-widget-area'); ?>
 
+<div class="oga-site-branding">
+    <a class="oga-home-link" href="<?php echo esc_url(home_url('/')); ?>" aria-label="<?php bloginfo('name'); ?>">
+        <img class="moblogo" src="https://seedstockcentral.com.au/wp-content/themes/OGA/images/moblogo.jpg" alt="<?php bloginfo('name'); ?>"/>
+        <span class="screen-reader-text"><?php bloginfo('name'); ?></span>
+    </a>
+</div>
+
 <div class="oga-shapes">
 <?php echo do_shortcode( "[stag_sidebar id='[top-ad-471-x-73']" ); ?>
 </div>

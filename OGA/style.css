@@ -104,6 +104,10 @@ li p, .oga-postcontent li p, .oga-blockcontent li p { margin: 1px; }
 .oga-header { margin: 0 auto; height: 165px; background-image: url('images/object299498320.png'), url('images/header.png'); background-position: 1px 23px, 0 0; background-repeat: no-repeat; position: relative; z-index: auto !important; }
 .responsive .oga-header { background-image: url('images/header.png'); background-position: center center; }
 .oga-header>.widget { position: absolute; z-index: 101; }
+.oga-site-branding { position: absolute; top: 0; left: 0; z-index: 102; }
+.oga-home-link { display: block; width: 330px; height: 126px; overflow: hidden; }
+.oga-home-link:hover { text-decoration: none; }
+.oga-home-link .moblogo { display: none; max-width: 100%; height: auto; }
 .oga-nav { background: #F4781F; position: absolute; margin: 0; bottom: 0; width: 100%; z-index: 100; }
 ul.oga-hmenu a, ul.oga-hmenu a:link, ul.oga-hmenu a:visited, ul.oga-hmenu a:hover { outline: none; position: relative; z-index: 11; }
 ul.oga-hmenu, ul.oga-hmenu ul { display: block; margin: 0; padding: 0; border: 0; list-style-type: none; }
