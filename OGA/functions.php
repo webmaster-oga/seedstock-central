@@ -441,7 +441,7 @@ function theme_update_page_meta() {
 
         if ($canonical) {
 
-            $res .= '<link rel="canonical" href="' . esc_url($canonical) . '">\n';
+            $res .= '<link rel="canonical" href="' . esc_url($canonical) . '">';
 
         }
 
@@ -470,37 +470,37 @@ function theme_update_page_meta() {
 
     if (!empty($og_url)) {
 
-        $res .= '<meta property="og:type" content="' . esc_attr($og_type) . '">\n';
+        $res .= '<meta property="og:type" content="' . esc_attr($og_type) . '">';
 
-        $res .= '<meta property="og:site_name" content="' . esc_attr(get_bloginfo('name')) . '">\n';
+        $res .= '<meta property="og:site_name" content="' . esc_attr(get_bloginfo('name')) . '">';
 
         if (!empty($og_title)) {
 
-            $res .= '<meta property="og:title" content="' . esc_attr($og_title) . '">\n';
+            $res .= '<meta property="og:title" content="' . esc_attr($og_title) . '">';
 
-            $res .= '<meta name="twitter:title" content="' . esc_attr($og_title) . '">\n';
+            $res .= '<meta name="twitter:title" content="' . esc_attr($og_title) . '">';
 
         }
 
         if (!empty($og_description)) {
 
-            $res .= '<meta property="og:description" content="' . esc_attr($og_description) . '">\n';
+            $res .= '<meta property="og:description" content="' . esc_attr($og_description) . '">';
 
-            $res .= '<meta name="twitter:description" content="' . esc_attr($og_description) . '">\n';
+            $res .= '<meta name="twitter:description" content="' . esc_attr($og_description) . '">';
 
         }
 
-        $res .= '<meta property="og:url" content="' . esc_url($og_url) . '">\n';
+        $res .= '<meta property="og:url" content="' . esc_url($og_url) . '">';
 
         if (!empty($og_image)) {
 
-            $res .= '<meta property="og:image" content="' . esc_url($og_image) . '">\n';
+            $res .= '<meta property="og:image" content="' . esc_url($og_image) . '">';
 
-            $res .= '<meta name="twitter:image" content="' . esc_url($og_image) . '">\n';
+            $res .= '<meta name="twitter:image" content="' . esc_url($og_image) . '">';
 
         }
 
-        $res .= '<meta name="twitter:card" content="summary_large_image">\n';
+        $res .= '<meta name="twitter:card" content="summary_large_image">';
 
     }
 
@@ -561,7 +561,7 @@ function theme_output_article_schema() {
 
     }
 
-    echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>\n';
+    echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>';
 
 }
 
