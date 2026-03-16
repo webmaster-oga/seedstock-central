@@ -27,6 +27,20 @@
     // 'desktop' class is used as responsive design initial value
     html.addClass('desktop');
 })(jQuery);
+// jQuery.browser compatibility shim (removed in jQuery 1.9+)
+if (typeof jQuery !== 'undefined' && !jQuery.browser) {
+    (function($) {
+        'use strict';
+        var ua = navigator.userAgent.toLowerCase();
+        $.browser = {
+            msie:    (/msie/.test(ua) || /trident/.test(ua)),
+            mozilla: (/mozilla/.test(ua) && !/webkit/.test(ua)),
+            webkit:  (/webkit/.test(ua)),
+            opera:   (/opera/.test(ua)),
+            version: (ua.match(/(?:msie |rv:|version\/)(\d+(?:\.\d+)?)/) || ['', '0'])[1]
+        };
+    })(jQuery);
+}
 
 jQuery(function ($) {
     'use strict';
@@ -694,7 +708,7 @@ var ThemeLightbox = (function ($) {
         var images = $(".oga-lightbox");
 
         this.init = function (ctrl) {
-            $(".oga-lightbox").live("click", { _ctrl: ctrl }, function (e) {
+            $(document).on("click", ".oga-lightbox", { _ctrl: ctrl }, function (e) {
 
                 if (e.data._ctrl === true && !e.ctrlKey) {
                     return;
@@ -705,19 +719,19 @@ var ThemeLightbox = (function ($) {
                 show(this);
             });
 
-            $(".oga-lightbox-wrapper .arrow.left:not(.disabled)").live("click", function () {
+            $(document).on("click", ".oga-lightbox-wrapper .arrow.left:not(.disabled)", function () {
                 move(current - 1);
             });
 
-            $(".oga-lightbox-wrapper .arrow.right:not(.disabled)").live("click", function () {
+            $(document).on("click", ".oga-lightbox-wrapper .arrow.right:not(.disabled)", function () {
                 move(current + 1);
             });
 
-            $(".oga-lightbox-wrapper .active").live("click", function () {
+            $(document).on("click", ".oga-lightbox-wrapper .active", function () {
                 move(current + 1);
             });
 
-            $(".oga-lightbox-wrapper .close").live("click", function () {
+            $(document).on("click", ".oga-lightbox-wrapper .close", function () {
                 close();
             });
         };

@@ -1,6 +1,6 @@
 <?php theme_print_sidebar('header-widget-area'); ?>
 
-<div class="mobile"><img class="moblogo" src="https://seedstockcentral.com.au/wp-content/themes/OGA/images/moblogo.jpg" alt=""/></div>
+<div class="mobile"><a href="<?php echo esc_url(home_url('/')); ?>"><img class="moblogo" src="https://seedstockcentral.com.au/wp-content/themes/OGA/images/moblogo.jpg" alt="<?php bloginfo('name'); ?>"/></a></div>
 
     <div class="oga-shapes">
 <?php echo do_shortcode( "[stag_sidebar id='[top-ad-471-x-73']" ); ?>

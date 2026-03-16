@@ -69,7 +69,10 @@ function theme_get_dynamic_sidebar_data($sidebar_id) {
     $content = theme_ob_get_clean();
     if (!$success)
         return false;
-    extract($theme_widget_args);
+    $before_widget = $theme_widget_args['before_widget'];
+    $after_widget  = $theme_widget_args['after_widget'];
+    $before_title  = $theme_widget_args['before_title'];
+    $after_title   = $theme_widget_args['after_title'];
     $data = explode($after_widget, $content);
     $widgets = array();
     $heading = theme_get_option('theme_' . (is_home() ? 'posts' : 'single') . '_widget_title_tag');
@@ -119,7 +122,7 @@ function theme_print_widget($widget) {
         return false;
     $widget_name = theme_get_array_value($widget, 'name', '');
     if ($widget_name) {
-        echo theme_get_widget_meta_option($widget_name, 'theme_widget_styling');
+        echo wp_kses_post(theme_get_widget_meta_option($widget_name, 'theme_widget_styling'));
         theme_wrapper(theme_get_array_value($widget, 'style', 'block'), $widget);
     } else {
         echo $widget['content'];

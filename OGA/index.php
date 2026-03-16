@@ -1,4 +1,7 @@
 <?php get_header(); ?>
+<?php if (is_home() || is_front_page()): ?>
+<h1 class="screen-reader-text"><?php echo esc_html(get_bloginfo('description')); ?></h1>
+<?php endif; ?>
 			<?php get_sidebar('top'); ?>
 			<?php
 			if (have_posts()) {

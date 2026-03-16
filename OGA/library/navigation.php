@@ -82,7 +82,7 @@ function theme_get_list_menu($args = array()) {
 					'id' => $id,
 					'active' => $active,
 					'attr' => array(
-						'title' => strip_tags(empty($el->attr_title) ? $title : $el->attr_title),
+						'title' => esc_attr(strip_tags(empty($el->attr_title) ? $title : $el->attr_title)),
 						'target' => $el->target,
 						'rel' => $el->xfn,
 						'href' => $el->url,
@@ -163,7 +163,7 @@ function theme_get_list_pages($args = array()) {
 		$items[] = new theme_MenuItem(array(
 					'id' => 'home',
 					'active' => $active,
-					'attr' => array('class' => ($active ? 'active' : ''), 'href' => get_home_url(), 'title' => strip_tags($title)),
+					'attr' => array('class' => ($active ? 'active' : ''), 'href' => get_home_url(), 'title' => esc_attr(strip_tags($title))),
 					'title' => $title,
 				));
 	}
@@ -179,7 +179,7 @@ function theme_get_list_pages($args = array()) {
 		$items[] = new theme_MenuItem(array(
 					'id' => $id,
 					'active' => $active,
-					'attr' => array('class' => ($active ? 'active' : ''), 'href' => $href, 'title' => strip_tags($title)),
+					'attr' => array('class' => ($active ? 'active' : ''), 'href' => $href, 'title' => esc_attr(strip_tags($title))),
 					'title' => $title,
 					'parent' => $page->post_parent
 				));
@@ -221,7 +221,7 @@ function theme_get_list_categories($args = array()) {
 		$items[] = new theme_MenuItem(array(
 					'id' => $id,
 					'active' => $active,
-					'attr' => array('class' => ($active ? 'active' : ''), 'href' => get_category_link($id), 'title' => strip_tags($desc)),
+					'attr' => array('class' => ($active ? 'active' : ''), 'href' => get_category_link($id), 'title' => esc_attr(strip_tags($desc))),
 					'title' => $title,
 					'parent' => $category->parent
 				));

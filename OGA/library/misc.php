@@ -15,7 +15,7 @@ function theme_strpos($source, $target) {
 }
 
 function theme_get_array_value($arr = array(), $key = null, $def = false) {
-	if (is_array($arr) && @isset($arr[$key])) {
+	if (is_array($arr) && isset($arr[$key])) {
 		return $arr[$key];
 	}
 	return $def;
@@ -48,11 +48,12 @@ function theme_get_current_url() {
 	if (is_ssl()) {
 		$pageURL .= 's';
 	}
-	$pageURL .= '://' . $_SERVER['SERVER_NAME'];
-	if ($_SERVER['SERVER_PORT'] != '80') {
-		$pageURL .= ':' . $_SERVER["SERVER_PORT"];
+	$pageURL .= '://' . sanitize_text_field(wp_unslash($_SERVER['SERVER_NAME']));
+	$port = absint(wp_unslash($_SERVER['SERVER_PORT']));
+	if ($port != 80 && $port != 443) {
+		$pageURL .= ':' . $port;
 	}
-	$pageURL .= $_SERVER["REQUEST_URI"];
+	$pageURL .= esc_url_raw(wp_unslash($_SERVER['REQUEST_URI']));
 	return $pageURL;
 }
 

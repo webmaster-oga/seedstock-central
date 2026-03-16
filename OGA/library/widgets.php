@@ -54,7 +54,7 @@ function theme_update_widget_additional($instance) {
 		if( false === ( $val = theme_get_array_value($_POST, $id) ) ) {
 			continue;
 		}
-		$val = stripslashes($val);
+		$val = wp_unslash($val);
 		$type = theme_get_array_value($value, 'type');
 		$options = theme_get_array_value($value, 'options');
 		switch ($type) {
@@ -125,13 +125,16 @@ function theme_widget_extra_control() {
 
 class VMenuWidget extends WP_Widget {
 
-	function VMenuWidget() {
+	function __construct() {
 		$widget_ops = array('classname' => 'vmenu', 'description' => __('Use this widget to add one of your custom menus as a widget.', THEME_NS));
-		parent::WP_Widget(false, __('Vertical Menu', THEME_NS), $widget_ops);
+		parent::__construct(false, __('Vertical Menu', THEME_NS), $widget_ops);
 	}
 
 	function widget($args, $instance) {
-		extract($args);
+		$before_widget = $args['before_widget'];
+		$after_widget  = $args['after_widget'];
+		$before_title  = $args['before_title'];
+		$after_title   = $args['after_title'];
 		$title = apply_filters('widget_title', $instance['title'], $instance, $this->id_base);
 		echo $before_widget;
 		echo $before_title . $title . $after_title;
@@ -168,7 +171,7 @@ class VMenuWidget extends WP_Widget {
 		</p>
 		<p>
 		<label for="<?php echo $this->get_field_id('source'); ?>"><?php echo __('Source', THEME_NS) . ':'; ?></label>
-		<select class="widefat" id="<?php echo $this->get_field_id('source'); ?>" name="<?php echo $this->get_field_name('source'); ?>" onchange="var s = jQuery('.p-<?php echo $this->get_field_id('nav_menu'); ?>'); if (this.value == 'Custom Menu') s.show(); else s.hide();">
+		<select class="widefat" id="<?php echo esc_attr($this->get_field_id('source')); ?>" name="<?php echo esc_attr($this->get_field_name('source')); ?>" onchange="var s = jQuery('.p-<?php echo esc_js($this->get_field_id('nav_menu')); ?>'); if (this.value == 'Custom Menu') s.show(); else s.hide();">
 		<?php
 		foreach ($sources as $s) {
 			$selected = ($source == $s ? ' selected="selected"' : '');
@@ -189,7 +192,7 @@ class VMenuWidget extends WP_Widget {
 			<?php
 			foreach ($menus as $menu) {
 				$selected = $nav_menu == $menu->term_id ? ' selected="selected"' : '';
-				echo '<option' . $selected . ' value="' . $menu->term_id . '">' . $menu->name . '</option>';
+				echo '<option' . $selected . ' value="' . absint($menu->term_id) . '">' . esc_html($menu->name) . '</option>';
 			}
 			?>
 			</select>
@@ -204,34 +207,37 @@ class VMenuWidget extends WP_Widget {
 
 class LoginWidget extends WP_Widget {
 
-	function LoginWidget() {
+	function __construct() {
 		$widget_ops = array('classname' => 'login', 'description' => __('Login form', THEME_NS));
-		$this->WP_Widget(false, __('Login', THEME_NS), $widget_ops);
+		parent::__construct(false, __('Login', THEME_NS), $widget_ops);
 	}
 
 	function widget($args, $instance) {
 		global $user_ID, $user_identity, $user_level, $user_email, $user_login;
-		extract($args);
+		$before_widget = $args['before_widget'];
+		$after_widget  = $args['after_widget'];
+		$before_title  = $args['before_title'];
+		$after_title   = $args['after_title'];
 		echo $before_widget;
 		echo $before_title;
 		if ($user_ID):
-			echo $user_identity;
+			echo esc_html($user_identity);
 			echo $after_title;
 			?>
 			<ul>
-			<li><a href="<?php bloginfo('wpurl') ?>/wp-admin/"><?php _e('Dashboard', THEME_NS); ?></a></li>
+			<li><a href="<?php echo esc_url(get_bloginfo('wpurl') . '/wp-admin/'); ?>"><?php _e('Dashboard', THEME_NS); ?></a></li>
 			<?php if ($user_level >= 1): ?>
-				<li><a href="<?php bloginfo('wpurl') ?>/wp-admin/post-new.php"><?php _e('Publish', THEME_NS); ?></a></li>
-				<li><a href="<?php bloginfo('wpurl') ?>/wp-admin/edit-comments.php"><?php _e('Comments', THEME_NS); ?></a></li>
+				<li><a href="<?php echo esc_url(get_bloginfo('wpurl') . '/wp-admin/post-new.php'); ?>"><?php _e('Publish', THEME_NS); ?></a></li>
+				<li><a href="<?php echo esc_url(get_bloginfo('wpurl') . '/wp-admin/edit-comments.php'); ?>"><?php _e('Comments', THEME_NS); ?></a></li>
 			<?php endif; ?>
-			<li><a href="<?php echo wp_logout_url() ?>&amp;redirect_to=<?php echo urlencode(theme_get_current_url()); ?>"><?php _e("Log out", THEME_NS); ?></a></li>
+			<li><a href="<?php echo esc_url(wp_logout_url(theme_get_current_url())); ?>"><?php _e("Log out", THEME_NS); ?></a></li>
 			</ul>
 		<?php
 		else:
 			_e('Log In', THEME_NS);
 			echo $after_title;
 			?>
-			<form action="<?php bloginfo('wpurl') ?>/wp-login.php" method="post" name="login" id="form-login">
+			<form action="<?php echo esc_url(get_bloginfo('wpurl') . '/wp-login.php'); ?>" method="post" name="login" id="form-login">
 				<fieldset class="input" style="border: 0 none;">
 					<p id="form-login-username">
 						<label for="log"><?php _e('Username', THEME_NS) ?></label>
@@ -249,13 +255,13 @@ class LoginWidget extends WP_Widget {
 					</p>
 					<input class="oga-button" type="submit" name="submit" value="<?php echo esc_attr(__('Log In', THEME_NS)); ?>" />
 				</fieldset>
-				<input type="hidden" name="redirect_to" value="<?php echo theme_get_current_url(); ?>"/>
+				<input type="hidden" name="redirect_to" value="<?php echo esc_url(theme_get_current_url()); ?>"/>
 			</form>
 			<ul>
 				<?php if (get_option('users_can_register')) { ?>
-				<li><a href="<?php bloginfo('wpurl') ?>/wp-register.php"><?php _e("Register", THEME_NS); ?></a></li>
+				<li><a href="<?php echo esc_url(get_bloginfo('wpurl') . '/wp-register.php'); ?>"><?php _e("Register", THEME_NS); ?></a></li>
 				<?php } ?>
-				<li><a href="<?php bloginfo('wpurl') ?>/wp-login.php?action=lostpassword"><?php _e("Lost your password?", THEME_NS); ?></a></li>
+				<li><a href="<?php echo esc_url(get_bloginfo('wpurl') . '/wp-login.php?action=lostpassword'); ?>"><?php _e("Lost your password?", THEME_NS); ?></a></li>
 			</ul>
 		<?php endif;
 		echo $after_widget;

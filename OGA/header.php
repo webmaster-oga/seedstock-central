@@ -7,7 +7,15 @@ if (isset($wp_locale)) {
 <head>
 <meta charset="<?php bloginfo('charset') ?>" />
 
-<title><?php wp_title('|', true, 'right'); bloginfo('name'); ?></title>
+<title><?php
+    $page_title = trim(wp_title('', false));
+    $site_name  = get_bloginfo('name');
+    if ( empty($page_title) || $page_title === $site_name ) {
+        echo esc_html($site_name);
+    } else {
+        echo esc_html($page_title . ' | ' . $site_name);
+    }
+?></title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -39,7 +47,10 @@ wp_head();
     <div class="oga-sheet clearfix">
 
 <?php if(theme_has_layout_part("header")) : ?>
-<header class="oga-header<?php echo (theme_get_option('theme_header_clickable') ? ' clickable' : ''); ?>"><?php get_sidebar('header'); ?></header>
+<header class="oga-header">
+    <a href="<?php echo esc_url(home_url('/')); ?>" aria-label="<?php bloginfo('name'); ?>" style="position:absolute;top:0;left:0;width:100%;height:126px;z-index:102;display:block;"></a>
+    <?php get_sidebar('header'); ?>
+</header>
 <?php endif; ?>
 
 <div class="oga-layout-wrapper">

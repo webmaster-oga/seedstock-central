@@ -14,7 +14,7 @@
  * 
  */
 function theme_subscribe_rss() {
-	return '<a class="button rss-subscribe" href="' . get_bloginfo('rss2_url') . '" title="' . __('RSS Feeds', THEME_NS) . '">' . __('RSS Feeds', THEME_NS) . '</a>';
+	return '<a class="button rss-subscribe" href="' . esc_url(get_bloginfo('rss2_url')) . '" title="' . esc_attr(__('RSS Feeds', THEME_NS)) . '">' . esc_html(__('RSS Feeds', THEME_NS)) . '</a>';
 }
 
 // ads
@@ -49,7 +49,7 @@ function theme_login_link() {
 
 // blog title
 function theme_blog_title() {
-	return '<span class="blog-title">' . get_bloginfo('name') . '</span>';
+	return '<span class="blog-title">' . esc_html(get_bloginfo('name')) . '</span>';
 }
 
 // validate xhtml
@@ -71,7 +71,7 @@ function theme_rss_url() {
 	return get_bloginfo('rss2_url', 'raw');
 }
 function theme_rss_title() {
-	return sprintf(__('%s RSS Feed', THEME_NS), get_bloginfo('name'));
+	return esc_html(sprintf(__('%s RSS Feed', THEME_NS), get_bloginfo('name')));
 }
 
 function theme_template_url() {

@@ -23,7 +23,15 @@ function theme_post_wrapper($args = '') {
 			'comments'     => ''
 		)
 	);
-	extract($args);
+	$id        = $args['id'];
+	$class     = $args['class'];
+	$title     = $args['title'];
+	$heading   = $args['heading'];
+	$thumbnail = $args['thumbnail'];
+	$before    = $args['before'];
+	$content   = $args['content'];
+	$after     = $args['after'];
+	$comments  = $args['comments'];
 	if (theme_is_empty_html($title) && theme_is_empty_html($content))
 		return;
 	if ($id) {
@@ -56,7 +64,11 @@ function theme_simple_wrapper($args = '') {
 			'content' => '',
 		)
 	);
-	extract($args);
+	$id      = $args['id'];
+	$class   = $args['class'];
+	$title   = $args['title'];
+	$heading = $args['heading'];
+	$content = $args['content'];
 	if (theme_is_empty_html($title) && theme_is_empty_html($content))
 		return;
 	if ($id) {
@@ -81,7 +93,11 @@ function theme_block_wrapper($args) {
 			'content' => '',
 		)
 	);
-	extract($args);
+	$id      = $args['id'];
+	$class   = $args['class'];
+	$title   = $args['title'];
+	$heading = $args['heading'];
+	$content = $args['content'];
 	if (theme_is_empty_html($title) && theme_is_empty_html($content))
 		return;
 	if ($id) {
@@ -133,7 +149,11 @@ function theme_vmenu_wrapper($args) {
 			'content' => '',
 		)
 	);
-	extract($args);
+	$id      = $args['id'];
+	$class   = $args['class'];
+	$title   = $args['title'];
+	$heading = $args['heading'];
+	$content = $args['content'];
 	if (theme_is_empty_html($title) && theme_is_empty_html($content))
 		return;
 	if ($id) {

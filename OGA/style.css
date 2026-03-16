@@ -393,7 +393,7 @@ blockquote p, .oga-postcontent blockquote p, .oga-blockcontent blockquote p, .og
 .oga-twitter-tag-icon:empty { vertical-align: middle; }
 .oga-footer-text ul>li:before { content: url('images/footerbullets.png'); margin-right: 6px; bottom: 2px; position: relative; display: inline-block; vertical-align: middle; font-size: 0; line-height: 0; margin-left: -13px; }
 .opera .oga-footer-text ul>li:before { /* Vertical-align:middle in Opera doesn't need additional offset */ bottom: 0; }
-.oga-footer-text li { font-size: 13px; font-family: Helvetica, Sans-Serif; color: #cccU; }
+.oga-footer-text li { font-size: 13px; font-family: Helvetica, Sans-Serif; color: #ccc; }
 .oga-footer-text ul>li, .oga-footer-text ol { padding: 0; }
 .oga-footer-text ul>li { padding-left: 13px; }
 .oga-page-footer, .oga-page-footer a, .oga-page-footer a:link, .oga-page-footer a:visited, .oga-page-footer a:hover { color: #888; font-family: Arial; font-size: 10px; font-style: normal; font-weight: normal; letter-spacing: normal; text-decoration: none; word-spacing: normal; }
@@ -525,9 +525,9 @@ img.pcs-featured-image { border: medium none; clear: left; float: left; margin: 
 .indexo-meta2 { display: none; }
 .ssctvwrapper { background-color: #f5f5f5; margin: 0 -2000px 20px !important; padding: 20px 2000px 13px; }
 .ssctv { width: 1000px; margin: 20px auto; }
-.beef { width: 1000px; margin: 20px auto; }
-.sheep { width: 1000px; margin: 40px auto; }
-.dairy { width: 1000px; margin: 20px auto; }
+.beef { width: 1000px; margin: 60px auto; }
+.sheep { width: 1000px; margin: 60px auto; }
+.dairy { width: 1000px; margin: 60px auto; }
 .ssctv > h2 { border-bottom: 3px solid; margin-bottom: 10px; }
 .beef > h2 { border-bottom: 3px solid; margin-bottom: 10px; }
 .sheep > h2 { border-bottom: 3px solid; margin-bottom: 10px; }
@@ -699,3 +699,12 @@ div.pointelle-slider-nav {
 
 ul.post-list.with-excerpt.with-image { column-count: 1; }
 ul.post-list.with-excerpt.with-image li { border-bottom: none; }
+/* Screen reader only - visually hidden but readable by search engines and assistants */
+.screen-reader-text {
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+    word-wrap: normal !important;
+}

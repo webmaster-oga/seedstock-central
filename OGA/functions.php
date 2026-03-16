@@ -129,6 +129,7 @@ add_action('wp', 'theme_init_layout');
 add_action('wp_head', 'theme_favicon');
 
 add_action('wp_head', 'theme_update_page_meta');
+add_action('wp_head', 'theme_output_article_schema');
 
 add_action('wp_enqueue_scripts', 'theme_update_scripts', 1000);
 
@@ -152,11 +153,8 @@ add_action('media_upload_image_header', 'wp_media_upload_handler');
 
 function theme_header_rel_link() {
 
-	if (theme_get_option('theme_header_clickable')):
-
-		?><link rel='header_link' href='<?php echo esc_url(theme_get_option('theme_header_link')); ?>' /><?php
-
-	endif;
+	$link = theme_get_option('theme_header_clickable') ? theme_get_option('theme_header_link') : home_url('/');
+	?><link rel='header_link' href='<?php echo esc_url($link); ?>' /><?php
 
 }
 
@@ -194,7 +192,7 @@ function theme_header_image_script() {
 
 			.oga-header {
 
-				background-image : url(<?php echo $theme_header_image; ?>);
+				background-image : url(<?php echo esc_url($theme_header_image); ?>);
 
 				background-position : center center;
 
@@ -397,9 +395,26 @@ function theme_update_page_meta() {
 
     $description = get_post_meta($post_id, 'page_description', true);
 
+    // Fallback: auto-generate description from post excerpt or content
+    if (empty($description) && $post_id > 0) {
+
+        $post_obj = get_post($post_id);
+
+        if ($post_obj) {
+
+            $description = wp_trim_words(
+                !empty($post_obj->post_excerpt) ? $post_obj->post_excerpt : wp_strip_all_tags($post_obj->post_content),
+                25,
+                '...'
+            );
+
+        }
+
+    }
+
     if (!empty($description)) {
 
-        $res .= "<meta name=\"description\" content=\"$description\">\n";
+        $res .= "<meta name=\"description\" content=\"" . esc_attr($description) . "\">\n";
 
     }
 
@@ -407,7 +422,7 @@ function theme_update_page_meta() {
 
     if (!empty($keywords)) {
 
-        $res .= "<meta name=\"keywords\" content=\"$keywords\">\n";
+        $res .= "<meta name=\"keywords\" content=\"" . esc_attr($keywords) . "\">\n";
 
     }
 
@@ -419,11 +434,134 @@ function theme_update_page_meta() {
 
     }
 
+    // Canonical link
+    if ($post_id > 0) {
+
+        $canonical = get_permalink($post_id);
+
+        if ($canonical) {
+
+            $res .= '<link rel="canonical" href="' . esc_url($canonical) . '">\n';
+
+        }
+
+    }
+
+    // Open Graph & Twitter Card tags
+    $meta_title = get_post_meta($post_id, 'page_title', true);
+
+    $og_title       = !empty($meta_title) ? $meta_title : get_the_title($post_id);
+
+    $og_description = $description;
+
+    $og_url         = get_permalink($post_id);
+
+    $og_image       = '';
+
+    if ($post_id > 0 && has_post_thumbnail($post_id)) {
+
+        $thumb = wp_get_attachment_image_src(get_post_thumbnail_id($post_id), 'large');
+
+        $og_image = $thumb ? $thumb[0] : '';
+
+    }
+
+    $og_type = is_singular() ? 'article' : 'website';
+
+    if (!empty($og_url)) {
+
+        $res .= '<meta property="og:type" content="' . esc_attr($og_type) . '">\n';
+
+        $res .= '<meta property="og:site_name" content="' . esc_attr(get_bloginfo('name')) . '">\n';
+
+        if (!empty($og_title)) {
+
+            $res .= '<meta property="og:title" content="' . esc_attr($og_title) . '">\n';
+
+            $res .= '<meta name="twitter:title" content="' . esc_attr($og_title) . '">\n';
+
+        }
+
+        if (!empty($og_description)) {
+
+            $res .= '<meta property="og:description" content="' . esc_attr($og_description) . '">\n';
+
+            $res .= '<meta name="twitter:description" content="' . esc_attr($og_description) . '">\n';
+
+        }
+
+        $res .= '<meta property="og:url" content="' . esc_url($og_url) . '">\n';
+
+        if (!empty($og_image)) {
+
+            $res .= '<meta property="og:image" content="' . esc_url($og_image) . '">\n';
+
+            $res .= '<meta name="twitter:image" content="' . esc_url($og_image) . '">\n';
+
+        }
+
+        $res .= '<meta name="twitter:card" content="summary_large_image">\n';
+
+    }
+
     if (!empty($res)) {
 
 		echo "\n" . $res;
 
 	}
+
+}
+
+
+function theme_output_article_schema() {
+
+    if (!is_single()) return;
+
+    global $post;
+
+    $author    = get_the_author_meta('display_name', $post->post_author);
+
+    $published = get_the_date('c', $post);
+
+    $modified  = get_the_modified_date('c', $post);
+
+    $image_url = '';
+
+    if (has_post_thumbnail($post->ID)) {
+
+        $src = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'large');
+
+        $image_url = $src ? $src[0] : '';
+
+    }
+
+    $schema = array(
+
+        '@context'       => 'https://schema.org',
+
+        '@type'          => 'NewsArticle',
+
+        'headline'       => get_the_title(),
+
+        'url'            => get_permalink(),
+
+        'datePublished'  => $published,
+
+        'dateModified'   => $modified,
+
+        'author'         => array('@type' => 'Person', 'name' => $author),
+
+        'publisher'      => array('@type' => 'Organization', 'name' => get_bloginfo('name')),
+
+    );
+
+    if (!empty($image_url)) {
+
+        $schema['image'] = $image_url;
+
+    }
+
+    echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>\n';
 
 }
 
@@ -796,7 +934,7 @@ function theme_get_post_thumbnail($args = array()) {
 		}
 	}
 	if ($result !== '') {
-		$result = '<div class="alignleft"><a href="' . get_permalink($post->ID) . '" title="' . esc_attr($title) . '">' . $result . '</a></div>';
+		$result = '<div class="alignleft"><a href="' . esc_url(get_permalink($post->ID)) . '" title="' . esc_attr($title) . '">' . $result . '</a></div>';
 	}
 	return $result;
 }
@@ -987,7 +1125,7 @@ function theme_get_excerpt($args = array()) {
 
 	if ($show_more_tag) {
 
-		$excerpt = $excerpt . ' <a class="more-link" href="' . $perma_link . '">' . $more_tag . '</a>';
+		$excerpt = $excerpt . ' <a class="more-link" href="' . esc_url($perma_link) . '">' . $more_tag . '</a>';
 
 	}
 
@@ -1291,7 +1429,7 @@ function theme_get_adjacent_post_link($format, $link, $in_same_cat = false, $exc
 
 	}
 
-	$date = mysql2date(get_option('date_format'), $post->post_date);
+	$date = wp_date(get_option('date_format'), strtotime($post->post_date));
 
 	$rel = $previous ? 'prev' : 'next';
 
@@ -1363,7 +1501,7 @@ function theme_comment($comment, $args, $depth) {
 
 		<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
 
-			<div class="oga-comment <?php echo $comment->comment_type ?> clearfix" id="comment-<?php comment_ID() ?>">
+			<div class="oga-comment <?php echo esc_attr($comment->comment_type); ?> clearfix" id="comment-<?php comment_ID() ?>">
     <div class="oga-comment-avatar"><?php echo theme_get_avatar(array('id' => $comment, 'size' => 80)); ?></div>
     <div class="oga-comment-inner">
         <div class="oga-comment-header comment-meta commentmetadata"><?php printf(__('%s on ', THEME_NS), get_comment_author_link($comment->comment_ID)); ?>
@@ -1396,7 +1534,7 @@ function theme_comment($comment, $args, $depth) {
 
 		<li class="post pingback">
 
-			<div class="oga-comment <?php echo $comment->comment_type ?> clearfix">
+			<div class="oga-comment <?php echo esc_attr($comment->comment_type); ?> clearfix">
 
 				<div class="oga-comment-content comment-body"><?php _e('Pingback:', THEME_NS); ?> <?php comment_author_link(); ?><?php edit_comment_link(__('(Edit)', THEME_NS), ' '); ?></div>
 
@@ -1428,7 +1566,8 @@ function theme_get_comments() {
 
 function theme_get_avatar_filter($avatar) {
 
-	return str_replace('src=', 'onerror=\'this.src="'.get_template_directory_uri().'/images/no-avatar.jpg"\' src=', $avatar);
+	$fallback = esc_js(esc_url(get_template_directory_uri() . '/images/no-avatar.jpg'));
+	return str_replace('src=', 'onerror=\'this.src="' . $fallback . '"\' src=', $avatar);
 
 }
 

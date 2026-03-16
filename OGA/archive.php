@@ -18,27 +18,27 @@ get_header(); ?>
 				theme_ob_start();
 
 				if (is_category()) {
-					echo '<h4>' . single_cat_title('', false) . '</h4>';
+					echo '<h1>' . single_cat_title('', false) . '</h1>';
 					echo category_description();
 				} elseif (is_tag()) {
-					echo '<h4>' . single_tag_title('', false) . '</h4>';
+					echo '<h1>' . single_tag_title('', false) . '</h1>';
 				} elseif (is_day()) {
-					echo '<h4>' . sprintf(__('Daily Archives: <span>%s</span>', THEME_NS), get_the_date()) . '</h4>';
+					echo '<h1>' . sprintf(__('Daily Archives: <span>%s</span>', THEME_NS), get_the_date()) . '</h1>';
 				} elseif (is_month()) {
-					echo '<h4>' . sprintf(__('Monthly Archives: <span>%s</span>', THEME_NS), get_the_date('F Y')) . '</h4>';
+					echo '<h1>' . sprintf(__('Monthly Archives: <span>%s</span>', THEME_NS), get_the_date('F Y')) . '</h1>';
 				} elseif (is_year()) {
-					echo '<h4>' . sprintf(__('Yearly Archives: <span>%s</span>', THEME_NS), get_the_date('Y')) . '</h4>';
+					echo '<h1>' . sprintf(__('Yearly Archives: <span>%s</span>', THEME_NS), get_the_date('Y')) . '</h1>';
 				} elseif (is_author()) {
 					the_post();
 					echo theme_get_avatar(array('id' => get_the_author_meta('user_email')));
-					echo '<h4>' . get_the_author() . '</h4>';
+					echo '<h1>' . get_the_author() . '</h1>';
 					$desc = get_the_author_meta('description');
 					if ($desc) {
 						echo '<div class="author-description">' . $desc . '</div>';
 					}
 					rewind_posts();
 				} elseif (isset($_GET['paged']) && !empty($_GET['paged'])) {
-					echo '<h4>' . __('Blog Archives', THEME_NS) . '</h4>';
+					echo '<h1>' . __('Blog Archives', THEME_NS) . '</h1>';
 				}
 				theme_post_wrapper(array('content' => theme_ob_get_clean(), 'class' => 'breadcrumbs'));
 

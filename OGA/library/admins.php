@@ -7,17 +7,33 @@ function theme_print_options() {
 		<div id="icon-themes" class="icon32"><br /></div>
 		<h2><?php _e('Theme Options', THEME_NS); ?></h2>
 		<?php
+		if (isset($_REQUEST['Submit']) || isset($_REQUEST['Reset'])) {
+			check_admin_referer('oga_theme_options_save', 'oga_theme_options_nonce');
+			if (!current_user_can('manage_options')) {
+				wp_die(__('You do not have permission to do this.', THEME_NS));
+			}
+		}
 		if (isset($_REQUEST['Submit'])) {
 			foreach ($theme_options as $value) {
 				$id = theme_get_array_value($value, 'id');
-				$val = stripslashes(theme_get_array_value($_REQUEST, $id));
+				$raw = wp_unslash(theme_get_array_value($_REQUEST, $id));
 				$type = theme_get_array_value($value, 'type');
 				switch ($type) {
 					case 'checkbox':
-						$val = ($val ? 1 : 0);
+						$val = ($raw ? 1 : 0);
 						break;
 					case 'numeric':
-						$val = (int) $val;
+						$val = absint($raw);
+						break;
+					case 'select':
+						$allowed = theme_get_array_value($value, 'options', array());
+						$val = array_key_exists($raw, $allowed) ? $raw : key($allowed);
+						break;
+					case 'textarea':
+						$val = $raw; // admin-only; may contain script/embed codes
+						break;
+					default: // text, widetext
+						$val = sanitize_text_field($raw);
 						break;
 				}
 				update_option($id, $val);
@@ -31,6 +47,7 @@ function theme_print_options() {
 			echo '<div id="message" class="updated fade"><p><strong>' . __('Settings restored.', THEME_NS) . '</strong></p></div>' . "\n";
 		}
 		echo '<form method="post" id="theme_options_form">' . "\n";
+		wp_nonce_field('oga_theme_options_save', 'oga_theme_options_nonce');
 		$in_form_table = false;
 		$dependent_fields = array();
 		foreach ($theme_options as $op) {
@@ -228,7 +245,7 @@ function theme_header_image_script_control() {
 	?>
 	<script>
 		jQuery(function($){
-			$('#image-form').live('submit', function() {
+			$(document).on('submit', '#image-form', function() {
 				$('.image-size-item input[value="full"]').attr('checked', true);
 				return true;
 			});
@@ -269,10 +286,10 @@ function theme_print_page_header_image_meta_box($post) {
 	$theme_header_image = theme_get_meta_option($post->ID, 'theme_header_image');
 	$theme_header_image_with_flash = theme_get_meta_option($post->ID, 'theme_header_image_with_flash') ? 'checked="checked" ' : '';
 	?>
-	<input id="upload_image_input" type="hidden" size="20" tabindex="6"  name="theme_header_image" value="<?php echo $theme_header_image; ?>" autocomplete="off" />
+	<input id="upload_image_input" type="hidden" size="20" tabindex="6"  name="theme_header_image" value="<?php echo esc_url($theme_header_image); ?>" autocomplete="off" />
 	<p class="hide-if-no-js image_control">
 		<a href="#" class="upload_image">
-			<img id="upload_image_image" src="<?php echo $theme_header_image; ?>" width="260" alt="Header Image" />
+			<img id="upload_image_image" src="<?php echo esc_url($theme_header_image); ?>" width="260" alt="Header Image" />
 		</a>
 		<br>
 		
@@ -300,7 +317,7 @@ function theme_print_page_header_image_meta_box($post) {
 					jQuery('.image_control').show();
 					tb_remove();
 				};
-				tb_show("", "media-upload.php?type=image_header&post_id=<?php echo $post->ID; ?>&TB_iframe=true");
+				tb_show("", "media-upload.php?type=image_header&post_id=<?php echo absint($post->ID); ?>&TB_iframe=true");
 				return false;
 			});
 			jQuery("#remove_image_button").click(function() {
@@ -310,7 +327,7 @@ function theme_print_page_header_image_meta_box($post) {
 				jQuery("#upload_image_button").show();
 				return false;
 			});
-			jQuery("#TB_window").live("tb_unload", function(){
+			jQuery(document).on("tb_unload", "#TB_window", function(){
 				if (window.send_to_editor_default)
 					window.send_to_editor = window.send_to_editor_default;
 			});
@@ -355,7 +372,7 @@ function theme_save_post($post_id) {
 	// OK, we're authenticated: we need to find and save the data
 	foreach ($meta_options as $value) {
 		$id = theme_get_array_value($value, 'id');
-		$val = stripslashes(theme_get_array_value($_REQUEST, $id, ''));
+		$val = wp_unslash(theme_get_array_value($_REQUEST, $id, ''));
 		$type = theme_get_array_value($value, 'type');
 		$necessary = theme_get_array_value($value, 'necessary');
 		if ($necessary && !current_user_can($necessary))
@@ -446,7 +463,7 @@ function makeDependentField(masters, slave) {
         masters = $.map(masters.split(';'), function (el) {
             el = el.split(':');
             el[0] = '#' + el[0];
-            $(el[0]).live('click', switchDependentField);
+            $(document).on('click', el[0], switchDependentField);
             if (el[1]) {
                 el[1] = el[1].split(',');
             }

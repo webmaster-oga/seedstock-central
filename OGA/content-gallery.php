@@ -29,7 +29,7 @@ if ($images) {
 	$image_img_tag = wp_get_attachment_image($image->ID, 'thumbnail');
 	?>
 	<div class="gallery-thumb">
-		<a class="size-thumbnail" href="<?php the_permalink(); ?>"><?php echo $image_img_tag; ?></a>
+		<a class="size-thumbnail" href="<?php the_permalink(); ?>"><?php echo wp_kses_post($image_img_tag); ?></a>
 	</div><!-- .gallery-thumb -->
 		<p><em><?php printf( _n( 'This gallery contains <a %1$s>%2$s photo</a>.', 'This gallery contains <a %1$s>%2$s photos</a>.', $total_images, THEME_NS ),
 				'href="' . get_permalink() . '" title="' . sprintf( esc_attr__( 'Permalink to %s', THEME_NS ), strip_tags(the_title_attribute( 'echo=0' )) ) . '" rel="bookmark"',

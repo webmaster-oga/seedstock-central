@@ -48,7 +48,7 @@ if (theme_get_option('theme_override_default_footer_content')) {
 
             if ($needLayout) { ?>
 
-    <div class="oga-layout-cell oga-layout-cell-size<?php echo $place_count; ?>">
+    <div class="oga-layout-cell oga-layout-cell-size<?php echo absint($place_count); ?>">
 
       <?php 
 
@@ -135,7 +135,7 @@ echo do_shortcode(theme_get_option('theme_override_default_footer_content') ? th
     <div class="oga-content-layout">
 
       <div class="oga-content-layout-row">
-        <div class="oga-layout-cell f0"> <img class="footerlogo" src="https://seedstockcentral.com.au/wp-content/uploads/2016/01/logo.png" /> </div>
+        <div class="oga-layout-cell f0"> <img class="footerlogo" src="https://seedstockcentral.com.au/wp-content/uploads/2016/01/logo.png" alt="Seedstock Central" /> </div>
 
         <div class="oga-layout-cell" style="width: 100%">
 
@@ -157,9 +157,9 @@ echo do_shortcode(theme_get_option('theme_override_default_footer_content') ? th
 
         <div class="oga-layout-cell f1"><a href="https://seedstockcentral.com.au/category/beef/" class="footer-title">Beef News</a><br />
 
-          <a href="https://seedstockcentral.com.au/category/dairy/" class="footer-title">Sheep News</a><br />
+          <a href="https://seedstockcentral.com.au/category/sheep/" class="footer-title">Sheep News</a><br />
 
-          <a href="https://seedstockcentral.com.au/category/sheep/" class="footer-title">Dairy News</a><br />
+          <a href="https://seedstockcentral.com.au/category/dairy/" class="footer-title">Dairy News</a><br />
 
           <a href="https://seedstockcentral.com.au/ssctv/" class="footer-title">SSC TV</a><br />
 
@@ -199,7 +199,7 @@ echo do_shortcode(theme_get_option('theme_override_default_footer_content') ? th
 
         </div>
 
-        <!--<div class="oga-layout-cell f4"> <img class="footerlogo" src="https://seedstockcentral.com.au/wp-content/uploads/2016/01/logo.png" /> </div>-->
+        <!--<div class="oga-layout-cell f4"> <img class="footerlogo" src="https://seedstockcentral.com.au/wp-content/uploads/2016/01/logo.png" alt="Seedstock Central" /> </div>-->
 
       </div>
 
