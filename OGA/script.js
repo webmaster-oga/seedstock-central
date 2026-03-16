@@ -24,8 +24,10 @@
         }
     }
 
-    // 'desktop' class is used as responsive design initial value
-    html.addClass('desktop');
+    // 'desktop' is only the fallback state when an earlier responsive class bootstrap has not run.
+    if (!html.hasClass('responsive') && !html.hasClass('responsive-tablet') && !html.hasClass('responsive-phone')) {
+        html.addClass('desktop');
+    }
 })(jQuery);
 // jQuery.browser compatibility shim (removed in jQuery 1.9+)
 if (typeof jQuery !== 'undefined' && !jQuery.browser) {

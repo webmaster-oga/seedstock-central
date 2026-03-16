@@ -1,29 +1,38 @@
 <?php theme_print_sidebar('header-widget-area'); ?>
 
-<div class="mobile"><a href="<?php echo esc_url(home_url('/')); ?>"><img class="moblogo" src="https://seedstockcentral.com.au/wp-content/themes/OGA/images/moblogo.jpg" alt="<?php bloginfo('name'); ?>"/></a></div>
+<div class="oga-site-branding">
+    <a class="oga-home-link" href="<?php echo esc_url(home_url('/')); ?>" aria-label="<?php bloginfo('name'); ?>">
+        <img class="moblogo" src="https://seedstockcentral.com.au/wp-content/themes/OGA/images/moblogo.jpg" alt="<?php bloginfo('name'); ?>"/>
+        <span class="screen-reader-text"><?php bloginfo('name'); ?></span>
+    </a>
+</div>
 
-    <div class="oga-shapes">
+<div class="oga-shapes">
 <?php echo do_shortcode( "[stag_sidebar id='[top-ad-471-x-73']" ); ?>
-            </div>
-
-
-
+</div>
 
 <nav class="oga-nav">
     <div class="oga-nav-inner">
+        <button class="oga-menu-btn" type="button" aria-expanded="false" aria-controls="oga-primary-menu">
+            <span class="screen-reader-text"><?php esc_html_e('Toggle navigation', THEME_NS); ?></span>
+            <span class="oga-menu-btn-line" aria-hidden="true"></span>
+            <span class="oga-menu-btn-line" aria-hidden="true"></span>
+            <span class="oga-menu-btn-line" aria-hidden="true"></span>
+        </button>
     <?php
-	wp_nav_menu(
-		array(
-			'theme_location' => 'primary-menu',
-			'menu_class'     => 'oga-hmenu',
-			'container'      => 'ul'
-		)
-	);
+    wp_nav_menu(
+        array(
+            'theme_location' => 'primary-menu',
+            'menu_id'        => 'oga-primary-menu',
+            'menu_class'     => 'oga-hmenu',
+            'container'      => false
+        )
+    );
 
-	get_sidebar('nav'); 
+    get_sidebar('nav');
 
-?> 
-        </div>
-    </nav>
+?>
+    </div>
+</nav>
 
-                    
+<div class="oga-mobile-ad-slot mobile-ad"><?php echo do_shortcode( "[stag_sidebar id='[top-ad-471-x-73']" ); ?></div>

@@ -3,6 +3,10 @@
 /*global jQuery */
 
 var responsiveDesign = {
+    breakpoints: {
+        desktopMin: 1000,
+        tabletMin: 768
+    },
     isResponsive: false,
     isDesktop: false,
     isTablet: false,
@@ -13,34 +17,23 @@ var responsiveDesign = {
         return function () {
             var html = $("html");
             this.windowWidth = $(window).width();
-            var triggerEvent = false;
+            var nextResponsive = this.windowWidth < this.breakpoints.desktopMin;
+            var nextTablet = nextResponsive && this.windowWidth >= this.breakpoints.tabletMin;
+            var nextPhone = nextResponsive && !nextTablet;
+            var triggerEvent = nextResponsive !== this.isResponsive ||
+                nextTablet !== this.isTablet ||
+                nextPhone !== this.isPhone;
 
-            var isRespVisible = $("#oga-resp").is(":visible");
-            if (isRespVisible && !this.isResponsive) {
-                html.addClass("responsive").removeClass("desktop");
-                this.isResponsive = true;
-                this.isDesktop = false;
-                triggerEvent = true;
-            } else if (!isRespVisible && !this.isDesktop) {
-                html.addClass("desktop").removeClass("responsive responsive-tablet responsive-phone");
-                this.isResponsive = this.isTablet = this.isPhone = false;
-                this.isDesktop = true;
-                triggerEvent = true;
-            }
+            this.isResponsive = nextResponsive;
+            this.isTablet = nextTablet;
+            this.isPhone = nextPhone;
+            this.isDesktop = !nextResponsive;
 
-            if (this.isResponsive) {
-                if ($("#oga-resp-t").is(":visible") && !this.isTablet) {
-                    html.addClass("responsive-tablet").removeClass("responsive-phone");
-                    this.isTablet = true;
-                    this.isPhone = false;
-                    triggerEvent = true;
-                } else if ($("#oga-resp-m").is(":visible") && !this.isPhone) {
-                    html.addClass("responsive-phone").removeClass("responsive-tablet");
-                    this.isTablet = false;
-                    this.isPhone = true;
-                    triggerEvent = true;
-                }
-            }
+            html
+                .toggleClass("responsive", this.isResponsive)
+                .toggleClass("desktop", this.isDesktop)
+                .toggleClass("responsive-tablet", this.isTablet)
+                .toggleClass("responsive-phone", this.isPhone);
 
             if (triggerEvent) {
                 $(window).trigger("responsive", this);
@@ -52,9 +45,8 @@ var responsiveDesign = {
     initialize: (function ($) {
         "use strict";
         return function () {
-            $("<div id=\"oga-resp\"><div id=\"oga-resp-m\"></div><div id=\"oga-resp-t\"></div></div>").appendTo("body");
             var resizeTimeout;
-            $(window).resize(function () {
+            $(window).on("resize orientationchange", function () {
                 clearTimeout(resizeTimeout);
                 resizeTimeout = setTimeout(function () { responsiveDesign.responsive(); }, 25);
             });
@@ -355,18 +347,65 @@ jQuery(window).bind("responsive", function (event, responsiveDesign) {
 
 
 jQuery(function($) {
-    $("<a href=\"#\" class=\"oga-menu-btn\"><span></span><span></span><span></span></a>").insertBefore(".oga-hmenu").click(function(e) {
-        var menu = $(this).next();
-        if (menu.is(":visible")) {
-            menu.slideUp("fast", function() {
-                $(this).removeClass("visible").css("display", "");
+    "use strict";
+    var nav = $("nav.oga-nav");
+    var button = nav.find(".oga-menu-btn");
+    var menu = nav.find(".oga-hmenu").first();
+
+    if (!button.length || !menu.length) {
+        return;
+    }
+
+    var setExpanded = function (expanded) {
+        button.attr("aria-expanded", expanded ? "true" : "false");
+    };
+
+    var closeMenu = function (animate) {
+        setExpanded(false);
+        if (animate) {
+            menu.stop(true, true).slideUp("fast", function () {
+                menu.removeClass("visible").css("display", "");
             });
-        } else {
-            menu.slideDown("fast", function() {
-                $(this).addClass("visible").css("display", "");
-            });
+            return;
         }
-        e.preventDefault();
+        menu.removeClass("visible").css("display", "");
+    };
+
+    var openMenu = function () {
+        setExpanded(true);
+        menu.stop(true, true).slideDown("fast", function () {
+            menu.addClass("visible").css("display", "");
+        });
+    };
+
+    button.on("click", function () {
+        if (menu.hasClass("visible")) {
+            closeMenu(true);
+            return;
+        }
+        openMenu();
+    });
+
+    $(document).on("click", function (event) {
+        if (!responsiveDesign.isResponsive || !menu.hasClass("visible")) {
+            return;
+        }
+        if ($(event.target).closest("nav.oga-nav").length === 0) {
+            closeMenu(true);
+        }
+    });
+
+    $(document).on("keyup", function (event) {
+        if (event.key === "Escape" && menu.hasClass("visible")) {
+            closeMenu(true);
+            button.trigger("focus");
+        }
+    });
+
+    $(window).on("responsive", function (event, state) {
+        if (!state.isResponsive) {
+            closeMenu(false);
+        }
     });
 });
 

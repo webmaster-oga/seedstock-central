@@ -23,6 +23,21 @@ if (isset($wp_locale)) {
 
 <link rel="stylesheet" href="<?php bloginfo('stylesheet_url') ?>" media="screen" />
 
+<script>
+  (function() {
+    var html = document.documentElement;
+    var width = window.innerWidth || html.clientWidth || 0;
+    var classes = [];
+    if (width < 1000) {
+      classes.push('responsive');
+      classes.push(width < 768 ? 'responsive-phone' : 'responsive-tablet');
+    } else {
+      classes.push('desktop');
+    }
+    html.className += (html.className ? ' ' : '') + classes.join(' ');
+  })();
+</script>
+
 <?php
 remove_action('wp_head', 'wp_generator');
 if (is_singular() && get_option('thread_comments')) {
@@ -31,12 +46,12 @@ if (is_singular() && get_option('thread_comments')) {
 wp_head();
 ?>
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-S1YX4ETRJL"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQTZTH9EZX"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-S1YX4ETRJL');
+  gtag('config', 'G-QQTZTH9EZX');
 </script>
 </head>
 <body <?php body_class(); ?>>
@@ -48,7 +63,6 @@ wp_head();
 
 <?php if(theme_has_layout_part("header")) : ?>
 <header class="oga-header">
-    <a href="<?php echo esc_url(home_url('/')); ?>" aria-label="<?php bloginfo('name'); ?>" style="position:absolute;top:0;left:0;width:100%;height:126px;z-index:102;display:block;"></a>
     <?php get_sidebar('header'); ?>
 </header>
 <?php endif; ?>

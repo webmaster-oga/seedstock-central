@@ -53,7 +53,7 @@ Sidebar regions: `sidebar.php`, `sidebar-nav.php`, `sidebar-top.php`, `sidebar-b
 ### Frontend
 
 - jQuery is bundled at `/OGA/jquery.js` (not loaded from CDN)
-- Google Analytics tag is hardcoded in `header.php` (ID: `G-S1YX4ETRJL`)
+- Google Analytics tag is hardcoded in `header.php` (ID: `G-QQTZTH9EZX`)
 - Category-specific content sliders for Beef, Sheep, and Dairy sections
 - Responsive breakpoints handled by `script.responsive.js` + `style.responsive.css`
 - IE7 compat via `style.ie7.css` and `html5.js`
