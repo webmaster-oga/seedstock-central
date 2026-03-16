@@ -1,0 +1,115 @@
+/* Created by Artisteer v4.1.0.59861 */
+
+.oga-header, #oga-header-bg, .oga-layout-cell, .oga-layout-wrapper, .oga-footer, .oga-nav, #oga-hmenu-bg, .oga-sheet,
+.clearfix {
+   zoom: expression(this.runtimeStyle.zoom="1", this.appendChild(document.createElement("br")).className="cleared");
+}
+
+.oga-textblock > div {
+   display: block;
+   line-height: normal;
+   zoom: 1;
+}
+
+.oga-header
+{
+   z-index: 1;
+   background-image: [headerimage];
+   background-position: [headerposition];
+}
+
+#oga-header-bg 
+{
+   display: none;
+}
+
+.oga-hmenu>li, .oga-hmenu>li>a
+{
+   display: inline !important;
+   zoom: 1;
+   float: none !important;
+   vertical-align: top;
+}
+ul.oga-hmenu, ul.oga-hmenu ul {
+   zoom: expression(this.runtimeStyle.zoom="1", this.appendChild(document.createElement("br")).className="cleared");
+}
+#oga-hmenu-bg 
+{
+   display: none;
+}
+
+ul.oga-hmenu>li:first-child {
+   padding-right:10px;
+}
+
+ul.oga-hmenu ul, .desktop-nav ul.oga-hmenu>li.ext:hover>a{
+   background-color: #EFF2F5 !important;
+}
+
+.oga-content-layout, .oga-content-layout-row, .oga-layout-cell 
+{
+   display: block;
+   zoom: 1;
+}
+.oga-layout-cell
+{
+   position:relative;
+   float: left;
+   clear: right;
+}
+
+input[type="text"]
+{
+   margin:0 0 0 -3px;
+   zoom:expression(runtimeStyle.zoom = 1, parentNode.insertBefore(document.createElement('div'), this).appendChild(this));
+}
+
+* html input[type="text"]
+{
+   margin :0;
+}
+
+form.oga-search>input[type="text"]
+{
+   margin:0 0 0 -3px;
+   zoom:expression(runtimeStyle.zoom = 1, parentNode.insertBefore(document.createElement('div'), this).appendChild(this));
+}
+
+form.oga-search div>input[type="text"]
+{
+   width: 100%;
+}
+
+* html form.oga-search>input[type="text"] 
+{
+   margin :0;
+}
+
+ul.oga-vmenu, ul.oga-vmenu ul, ul.oga-vmenu li{
+   zoom: 1;
+}
+
+ul.oga-vmenu ul 
+{
+}
+
+.oga-postheadericons span{
+   zoom: 1;
+}
+.oga-postcontent {
+   height: 1%;
+}
+
+.close-alt, .arrow-right-alt, .arrow-left-alt {
+   display: block !important;
+}
+.cw, .ccw {
+   display: none !important;
+}
+
+.oga-sidebar1 
+{
+   width: auto;
+   float:none;
+}
+

@@ -1,0 +1,328 @@
+.responsive body { min-width: 240px; }
+
+.responsive .oga-content-layout img, .responsive .oga-content-layout video { max-width: 100%; height: auto !important; }
+
+.responsive.responsive-phone .oga-content-layout img { float: none !important; }
+
+.responsive .oga-content-layout .oga-sidebar0, .responsive .oga-content-layout .oga-sidebar1, .responsive .oga-content-layout .oga-sidebar2 { width: auto !important; }
+
+.responsive .oga-content-layout, .responsive .oga-content-layout-row, .responsive .oga-layout-cell { display: block; }
+
+.responsive .image-caption-wrapper { width: auto; }
+
+.responsive.responsive-tablet .oga-vmenublock, .responsive.responsive-tablet .oga-block { margin-left: 1%; margin-right: 1%; width: 48%; float: left; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+
+.responsive .oga-responsive-embed { position: relative; padding-bottom: 56.25%; /* 16:9 */ height: 0; }
+
+.responsive .oga-responsive-embed iframe, .responsive .oga-responsive-embed object, .responsive .oga-responsive-embed embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+.responsive .oga-sheet { width: auto !important; min-width: 240px !important; max-width: none; margin-right: 1% !important; margin-left: 1% !important; }
+
+#oga-resp { display: none; }
+
+
+
+/*@media all and (max-width: 999px) {
+
+#oga-resp, #oga-resp-t { display: block; }
+
+#oga-resp-m { display: none; }
+
+}*/
+
+
+
+@media all and (max-width: 500px) {
+
+.oga-pager {
+
+    border-radius: 4px;
+
+    clear: both;
+
+    margin: 0 auto 15px;
+
+    padding: 6px;
+
+    text-align: center;
+
+}
+.adkingprobanner.top-ad.akpbanner.banner15540 img {
+    width: 100%;
+}
+.more-text {
+
+    color: #000;
+
+    float: right;
+
+    font-weight: bold;
+
+    margin-right: 10px;
+
+    margin-top: -28px;
+
+    text-decoration: none;
+
+}
+
+.category-sales-videos .alignleft {
+
+    float: none;
+
+}
+
+.category-sales-videos article {
+
+    text-align: center;
+
+    width: 100%;
+
+}
+
+.category-seedstock-videos .alignleft {
+
+    float: none;
+
+}
+
+.category-seedstock-videos article {
+
+    text-align: center;
+
+    width: 100%;
+
+}
+
+.category-documentaries .alignleft {
+
+    float: none;
+
+}
+
+.category-documentaries article {
+
+    text-align: center;
+
+    width: 100%;
+
+}
+
+.f0 .footerlogo {
+
+    display: block;
+
+}
+
+.footerlogo { margin: 10px 7% !important; width: 90%; }
+
+.oga-page-footer { background-color: #333; color: #ffffff; margin: 33px -2000px 0; padding: 6px 2000px; position: relative; text-align: center !important; text-decoration: none; z-index: auto !important; }
+
+.mobile-ad .adkingprobanner.top-ad.akpbanner.banner33 img { margin-top: -10px; width: 100%; }
+
+.f1 { display: none !important; }
+
+.f2 { display: none !important; }
+
+.f3 { display: none !important; }
+
+.f4 { display: none !important; }
+
+.clear { clear: both; }
+
+.greyline { border-bottom: 1px solid #ccc; display: block; font-size: 22px; margin: -4px auto 23px; width: 80%; }
+
+.mobile-ad .adkingprobanner.top-ad { height: auto !important; width: 100% !important; margin: 0 !important; }
+
+.oga-bar.oga-nav { display: none !important; }
+
+.oga-content-layout .oga-sidebar1 { margin: -20px 10px 0; padding-left: 0; padding-top: 0 !important; width: 100% !important; }
+
+#oga-resp, #oga-resp-m { display: block; }
+
+#oga-resp-t { display: none; }
+
+.oga-block.widget.tribe_mini_calendar_widget.clearfix { display: none; }
+
+.es-after-slide strong { margin-left: 10px; }
+
+.pcs-post-title { margin-left: 0px; }
+
+img.pcs-featured-image { display: none; }
+
+.ssctv { margin: 20px auto; padding: 0px; width: 100%; }
+
+.beef { margin: 20px auto; padding: 0; width: 100%; }
+
+.dairy { margin: 20px auto; padding: 0; width: 100%; }
+
+.sheep { margin: 20px auto; padding: 0; width: 100%; }
+
+.ssctv > h2 { border-bottom: 0px solid; margin-bottom: 10px; padding-left: 10px; }
+
+.beef > h2 { border-bottom: 3px solid; margin-bottom: 10px; padding-left: 10px; }
+
+.sheep > h2 { border-bottom: 3px solid; margin-bottom: 10px; padding-left: 10px; }
+
+.dairy > h2 { border-bottom: 3px solid; margin-bottom: 10px; padding-left: 10px; }
+
+.excerpt-text { display: block; padding-left: 10px; }
+
+.excerpt-text > strong { margin-left: 0; }
+
+.desktopnews { display: none; }
+
+.phonenews { display: block; }
+
+.excerpt-text > strong { color: #000; display: block; margin-bottom: -12px !important; }
+
+.excerpt-text { color: #000; display: block; padding-left: 10px; }
+
+#featured_top .wp-post-image { margin-right: 0 !important; }
+
+#featured_top .excerpt-text { padding-left: 0; }
+
+.phonenews > h2 { margin-bottom: 10px; }
+
+.adkingprobanner.side-ad-1 { margin: 20px auto 30px; }
+
+.adkingprobanner.side-ad-2 { margin: 20px auto 30px; }
+
+#base-ad-1000-x-98 { display: none; }
+
+.base-ad { margin: 20px auto; }
+
+.ssctvwrapper { background-color: #f5f5f5; margin: 0 -2000px 20px !important; padding: 15px 2000px 0; }
+
+ul.oga-hmenu > li > a { text-align: center !important; }
+
+ul.oga-hmenu > li > a.active { border-bottom: 0 solid #000000; }
+
+.moblogo { margin: auto; width: 80%; }
+
+.mobile { display: block; }
+
+.footer-ad { display: none; }
+
+.mobile-ad { display: block; }
+
+}
+
+.responsive .oga-header { width: auto; height: auto; min-height: 100px; min-width: 1%; background-position: center center !important; background-size: cover !important; background-repeat: repeat !important; }
+
+.responsive .oga-header .oga-headline, .responsive .oga-header .oga-slogan { display: block !important; top: 0 !important; left: 0 !important; margin: 2% !important; }
+
+.responsive .oga-header .oga-headline a, .responsive .oga-header .oga-slogan { white-space: normal !important; }
+
+.responsive .oga-header * { position: relative; text-align: center; -webkit-transform: none !important; -moz-transform: none !important; -o-transform: none !important; -ms-transform: none !important; transform: none !important; }
+
+.responsive .oga-header #oga-flash-area, .responsive .oga-header .oga-shapes>* { display: none; }
+
+.responsive #oga-header-bg { background-position: center center !important; background-size: cover !important; background-repeat: repeat !important; }
+
+/* Search and other elements in header element directly */
+
+
+
+.responsive .oga-header>.oga-textblock { position: relative !important; display: block !important; margin: 1% auto !important; width: 75% !important; top: auto !important; right: auto !important; bottom: auto !important; left: auto !important; }
+
+/* For icons like facebook, rss, etc. */
+
+
+
+.responsive .oga-header>.oga-textblock>div { width: 100%; }
+
+/* dynamic width nav */
+
+
+
+.oga-nav .oga-menu-btn { border: 1px solid #404040; border-radius: 3px; box-shadow: 0 0 3px 0 rgba(0, 0, 0, .2); display: none; background: -ms-linear-gradient(top, #707070 0, #000 100%); background: -moz-linear-gradient(top, #707070 0, #000 100%); background: -o-linear-gradient(top, #707070 0, #000 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #707070), color-stop(1, #000)); background: -webkit-linear-gradient(top, #707070 0, #000 100%); background: linear-gradient(to bottom, #707070 0, #000 100%); margin: 3px; padding: 5px; position: relative; width: 20px; }
+
+.oga-nav .oga-menu-btn span { background: #E0E0E0; border-radius: 2px; display: block; height: 3px; margin: 3px 1px; position: relative; -moz-transition: background .2s; -o-transition: background .2s; -webkit-transition: background .2s; transition: background .2s; }
+
+.oga-nav .oga-menu-btn:hover span { background: #f3f3f3; }
+
+.responsive .oga-nav .oga-menu-btn { display: inline-block; }
+
+.responsive nav.oga-nav, .responsive .oga-nav-inner { width: auto !important; position: relative !important; top: auto !important; left: auto !important; right: auto !important; bottom: auto !important; margin-top: 0; margin-bottom: 0; min-width: 0; text-align: left !important; }
+
+.responsive nav.oga-nav { min-width: 1%; }
+
+.responsive .oga-nav { padding-left: 0; padding-right: 0; margin-top: 0px !important; }
+
+/* full width hmenu, instead of inline-block */
+
+
+
+.responsive .oga-nav ul.oga-hmenu { display: none; float: none; text-align: center; }
+
+.responsive .oga-nav .oga-hmenu.visible { display: block; }
+
+/* elements on different lines */
+
+
+
+.responsive .oga-nav ul.oga-hmenu li, .oga-hmenu-extra1, .oga-hmenu-extra2 { float: none; }
+
+/* horizontal margins */
+
+
+
+.responsive .oga-nav ul.oga-hmenu>li:first-child, .responsive .oga-nav ul.oga-hmenu>li:last-child, .responsive .oga-nav ul.oga-hmenu>li { margin-left: 0; margin-right: 0; }
+
+/* separator */ 
+
+
+
+.responsive .oga-nav ul.oga-hmenu>li:before { display: none; }
+
+/* vertical distance between items */
+
+
+
+.responsive .oga-nav ul.oga-hmenu a { margin-top: 1px !important; margin-bottom: 1px !important; height: auto; white-space: normal; }
+
+.responsive .oga-nav ul.oga-hmenu>li:first-child>a { margin-top: 0 !important; }
+
+.responsive .oga-nav ul.oga-hmenu>li:last-child>a { margin-bottom: 0 !important; }
+
+/* fixes for extended menu */
+
+
+
+.responsive .oga-nav .ext, .responsive .oga-nav ul.oga-hmenu>li>ul, .responsive .oga-nav ul.oga-hmenu>li>ul>li, .responsive .oga-nav ul.oga-hmenu>li>ul>li a { width: auto !important; }
+
+/* submenu position on hover */
+
+
+
+.responsive .oga-nav ul.oga-hmenu ul { left: auto !important; right: auto !important; top: auto !important; bottom: auto !important; position: relative !important; visibility: visible !important; }
+
+.responsive .oga-nav ul.oga-hmenu>li>ul>li:first-child:after { display: none; }
+
+.responsive .oga-nav ul.oga-hmenu ul a { padding-left: 4% !important; }
+
+.responsive .oga-nav ul.oga-hmenu ul ul a { padding-left: 6% !important; }
+
+.responsive .oga-nav ul.oga-hmenu ul ul ul a { padding-left: 8% !important; }
+
+.responsive .oga-nav ul.oga-hmenu ul ul ul ul a { padding-left: 10% !important; }
+
+.responsive .oga-nav ul.oga-hmenu ul ul ul ul ul a { padding-left: 12% !important; }
+
+.responsive .oga-nav ul.oga-hmenu>li>ul { padding: 5px; }
+
+.responsive .oga-nav ul.oga-hmenu>li>ul:before { top: 0; right: 0; bottom: 0; left: 0; }
+
+.responsive .oga-content-layout, .responsive .oga-content-layout-row, .responsive .oga-layout-cell { display: block; }
+
+.responsive .oga-layout-cell { width: auto !important; height: auto !important; border-right-width: 0 !important; border-left-width: 0 !important; border-radius: 0 !important; }
+
+.responsive .oga-content-layout:after, .responsive .oga-content-layout-row:after, .responsive .oga-layout-cell:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+
+.responsive .oga-post { border-radius: 0; }
+
+.responsive .oga-footer-inner { width: auto; padding: 2% !important; }
+
+.responsive .responsive-tablet-layout-cell { width: 50% !important; float: left; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+

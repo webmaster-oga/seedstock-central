@@ -1,0 +1,212 @@
+<site>
+ <posts />
+ <pages>
+  <page author="" caption="Home" dateModified="01/25/2016 13:31:28" description="" keywords="" metaTags="" name="home" path="/home" showInHmenu="True" showInVmenu="True" showTitle="True" title="Home" titleInBrowser="Home">
+   <pageHead>&lt;style&gt;.oga-content .oga-postcontent-0 .layout-item-0 { padding-right: 10px;padding-left: 10px;  }
+.ie7 .oga-post .oga-layout-cell {border:none !important; padding:0 !important; }
+.ie6 .oga-post .oga-layout-cell {border:none !important; padding:0 !important; }
+
+&lt;/style&gt;</pageHead>
+   <content>&lt;div class="oga-content-layout"&gt;
+    &lt;div class="oga-content-layout-row"&gt;
+    &lt;div class="oga-layout-cell layout-item-0" style="width: 100%" &gt;
+        &lt;p&gt;&lt;br&gt;&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="oga-content-layout"&gt;
+    &lt;div class="oga-content-layout-row"&gt;
+    &lt;div class="oga-layout-cell layout-item-0" style="width: 50%" &gt;
+        &lt;p&gt;&lt;br&gt;&lt;/p&gt;
+    &lt;/div&gt;&lt;div class="oga-layout-cell layout-item-0" style="width: 50%" &gt;
+        &lt;p&gt;&lt;br&gt;&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+   <layout>
+    <struct>&lt;div class="oga-content-layout"&gt;
+    &lt;div class="oga-content-layout-row"&gt;
+    &lt;div class="oga-layout-cell layout-item-0" style="width: 100%" &gt;
+        {content}
+    &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="oga-content-layout"&gt;
+    &lt;div class="oga-content-layout-row"&gt;
+    &lt;div class="oga-layout-cell layout-item-0" style="width: 50%" &gt;
+        {content}
+    &lt;/div&gt;&lt;div class="oga-layout-cell layout-item-0" style="width: 50%" &gt;
+        {content}
+    &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</struct>
+    <contents>
+     <content>&lt;p&gt;&lt;br&gt;&lt;/p&gt;</content>
+     <content>&lt;p&gt;&lt;br&gt;&lt;/p&gt;</content>
+     <content>&lt;p&gt;&lt;br&gt;&lt;/p&gt;</content>
+    </contents>
+   </layout>
+  </page>
+  <page author="" caption="Beef" dateModified="07/13/2012 19:26:17" description="" keywords="" metaTags="" name="new-page" path="/new-page" showInHmenu="True" showInVmenu="True" showTitle="True" title="Subpage 1" titleInBrowser="Subpage 1">
+   <pageHead>&lt;style&gt;.oga-content .oga-postcontent-0 .layout-item-0 { padding-right: 10px;padding-left: 10px;  }
+.ie7 .oga-post .oga-layout-cell {border:none !important; padding:0 !important; }
+.ie6 .oga-post .oga-layout-cell {border:none !important; padding:0 !important; }
+
+&lt;/style&gt;</pageHead>
+   <content>&lt;div class="oga-content-layout"&gt;
+    &lt;div class="oga-content-layout-row"&gt;
+    &lt;div class="oga-layout-cell layout-item-0" style="width: 100%" &gt;
+        &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+   <layout>
+    <struct>&lt;div class="oga-content-layout"&gt;
+    &lt;div class="oga-content-layout-row"&gt;
+    &lt;div class="oga-layout-cell layout-item-0" style="width: 100%" &gt;
+        {content}
+    &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</struct>
+    <contents>
+     <content>&lt;p&gt;&lt;br /&gt;&lt;/p&gt;</content>
+    </contents>
+   </layout>
+  </page>
+  <page author="" caption="Events" dateModified="07/13/2012 19:26:28" description="" keywords="" metaTags="" name="new-page-3" path="/new-page-3" showInHmenu="True" showInVmenu="True" showTitle="True" title="Subpage 3" titleInBrowser="Subpage 3">
+   <pageHead>&lt;style&gt;.oga-content .oga-postcontent-0 .layout-item-0 { padding-right: 10px;padding-left: 10px;  }
+.ie7 .oga-post .oga-layout-cell {border:none !important; padding:0 !important; }
+.ie6 .oga-post .oga-layout-cell {border:none !important; padding:0 !important; }
+
+&lt;/style&gt;</pageHead>
+   <content>&lt;div class="oga-content-layout"&gt;
+    &lt;div class="oga-content-layout-row"&gt;
+    &lt;div class="oga-layout-cell layout-item-0" style="width: 100%" &gt;
+        &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+   <layout>
+    <struct>&lt;div class="oga-content-layout"&gt;
+    &lt;div class="oga-content-layout-row"&gt;
+    &lt;div class="oga-layout-cell layout-item-0" style="width: 100%" &gt;
+        {content}
+    &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</struct>
+    <contents>
+     <content>&lt;p&gt;&lt;br /&gt;&lt;/p&gt;</content>
+    </contents>
+   </layout>
+  </page>
+  <page author="" caption="Sheep" dateModified="01/01/0001 00:00:00" description="" keywords="" metaTags="" name="sheep" path="/sheep" showInHmenu="True" showInVmenu="True" showTitle="True" title="New Page" titleInBrowser="New Page">
+   <pageHead></pageHead>
+   <content>&lt;p&gt;&lt;br/&gt;&lt;/p&gt;</content>
+   <layout>
+    <struct>{content}</struct>
+    <contents>
+     <content>&lt;p&gt;&lt;br/&gt;&lt;/p&gt;</content>
+    </contents>
+   </layout>
+  </page>
+  <page author="" caption="Dairy" dateModified="01/01/0001 00:00:00" description="" keywords="" metaTags="" name="dairy" path="/dairy" showInHmenu="True" showInVmenu="True" showTitle="True" title="New Page" titleInBrowser="New Page">
+   <pageHead></pageHead>
+   <content>&lt;p&gt;&lt;br/&gt;&lt;/p&gt;</content>
+   <layout>
+    <struct>{content}</struct>
+    <contents>
+     <content>&lt;p&gt;&lt;br/&gt;&lt;/p&gt;</content>
+    </contents>
+   </layout>
+  </page>
+  <page author="" caption="SSC TV" dateModified="07/13/2012 19:26:24" description="" keywords="" metaTags="" name="new-page-2" path="/new-page-2" showInHmenu="True" showInVmenu="True" showTitle="True" title="Subpage 2" titleInBrowser="Subpage 2">
+   <pageHead>&lt;style&gt;.oga-content .oga-postcontent-0 .layout-item-0 { padding-right: 10px;padding-left: 10px;  }
+.ie7 .oga-post .oga-layout-cell {border:none !important; padding:0 !important; }
+.ie6 .oga-post .oga-layout-cell {border:none !important; padding:0 !important; }
+
+&lt;/style&gt;</pageHead>
+   <content>&lt;div class="oga-content-layout"&gt;
+    &lt;div class="oga-content-layout-row"&gt;
+    &lt;div class="oga-layout-cell layout-item-0" style="width: 100%" &gt;
+        &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+   <layout>
+    <struct>&lt;div class="oga-content-layout"&gt;
+    &lt;div class="oga-content-layout-row"&gt;
+    &lt;div class="oga-layout-cell layout-item-0" style="width: 100%" &gt;
+        {content}
+    &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</struct>
+    <contents>
+     <content>&lt;p&gt;&lt;br /&gt;&lt;/p&gt;</content>
+    </contents>
+   </layout>
+  </page>
+  <page author="" caption="Contact" dateModified="01/01/0001 00:00:00" description="" keywords="" metaTags="" name="contact" path="/contact" showInHmenu="True" showInVmenu="True" showTitle="True" title="New Page" titleInBrowser="New Page">
+   <pageHead></pageHead>
+   <content>&lt;p&gt;&lt;br/&gt;&lt;/p&gt;</content>
+   <layout>
+    <struct>{content}</struct>
+    <contents>
+     <content>&lt;p&gt;&lt;br/&gt;&lt;/p&gt;</content>
+    </contents>
+   </layout>
+  </page>
+ </pages>
+ <sidebars>
+  <sidebar caption="" name="sidebar1">
+   <menuWidget name="art_vmenu-1" position="0" title="VMenu">
+    <content>&lt;div class="oga-vmenublock clearfix"&gt;
+        &lt;div class="oga-vmenublockcontent" &gt;
+&lt;ul class="oga-vmenu"&gt;
+	&lt;li&gt;
+		&lt;a href="/home" class="active"&gt;Home&lt;/a&gt;
+	&lt;/li&gt;	
+	&lt;li&gt;
+		&lt;a href="/new-page" &gt;Beef&lt;/a&gt;
+	&lt;/li&gt;	
+	&lt;li&gt;
+		&lt;a href="/new-page-3" &gt;Events&lt;/a&gt;
+	&lt;/li&gt;	
+	&lt;li&gt;
+		&lt;a href="/sheep" &gt;Sheep&lt;/a&gt;
+	&lt;/li&gt;	
+	&lt;li&gt;
+		&lt;a href="/dairy" &gt;Dairy&lt;/a&gt;
+	&lt;/li&gt;	
+	&lt;li&gt;
+		&lt;a href="/new-page-2" &gt;SSC TV&lt;/a&gt;
+	&lt;/li&gt;	
+	&lt;li&gt;
+		&lt;a href="/contact" &gt;Contact&lt;/a&gt;
+	&lt;/li&gt;	
+&lt;/ul&gt;
+                
+        &lt;/div&gt;
+&lt;/div&gt;
+</content>
+    <pageHead></pageHead>
+   </menuWidget>
+   <block name="text-1" position="1" title="Block">
+    <content>&lt;p&gt;Enter Block content here...&lt;/p&gt;
+&lt;br&gt;
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam pharetra, tellus sit amet congue vulputate, nisi erat iaculis nibh, vitae feugiat sapien ante eget mauris.&lt;/p&gt;</content>
+    <pageHead></pageHead>
+   </block>
+  </sidebar>
+  <sidebar caption="" name="content-before" />
+  <sidebar caption="" name="content-after" />
+ </sidebars>
+ <collages />
+</site>
